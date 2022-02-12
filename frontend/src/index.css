@@ -15,9 +15,7 @@
   --z-fixed: 100;
   --spacing: 0.1rem;
   --radius: 0.25rem;
-  --max-width: 1170px;
   --main-color: #ecf0f3;
-  --gray-color: #515152;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --transition: all 0.4s linear;
 }
@@ -48,13 +46,9 @@ body {
   font-weight: var(--font-medium);
   line-height: 1.6;
   background-color: var(--main-color);
+  overflow: hidden;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 h1,
 h2,
@@ -76,4 +70,18 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+button {
+  border: none;
+  outline: none;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 95vw;
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+  height: 100vh;
 }

@@ -18,7 +18,7 @@ const initialState: InitialStateI = {
   isMember: false,
 };
 
-const Login = () => {
+const Login: React.FC = () => {
   const [values, setValues] = useState<InitialStateI>(initialState);
 
   const toggleMember = () => {
@@ -26,51 +26,54 @@ const Login = () => {
   };
 
   return (
-    <Wrapper>
-      <div className="logo">
-        <img src={logo} alt="logo" />
-      </div>
-      <h1 className="title">nonograms</h1>
-      <h2 className="subtitle">{values.isMember ? 'Login' : 'Register'}</h2>
-      <form>
-        <div className="fields">
-          {!values.isMember && (
-            <div className="username">
-              <AiOutlineUser />
-              <input type="text" placeholder="Username" />
-            </div>
-          )}
-          <div className="email">
-            <MdAlternateEmail />
-            <input type="email" placeholder="Enter email" />
-          </div>
-          <div className="password">
-            <AiOutlineLock />
-            <input type="password" placeholder="Password" />
-          </div>
-          <button className="signin-btn">
-            {values.isMember ? 'Login' : 'Register'}
-          </button>
+    <Wrapper className="wrapper">
+      <div className="login">
+        <div className="logo">
+          <img src={logo} alt="logo" />
         </div>
-        <p>
-          {values.isMember ? 'Not a member yet?' : 'Alreaddy a member? '}
-          <button type="button" onClick={toggleMember}>
-            {values.isMember ? 'Register' : 'Login'}
-          </button>
-        </p>
-      </form>
+        <h1 className="title">nonograms</h1>
+        <h2 className="subtitle">{values.isMember ? 'Login' : 'Register'}</h2>
+        <form>
+          <div className="fields">
+            {!values.isMember && (
+              <div className="username">
+                <AiOutlineUser />
+                <input type="text" placeholder="Username" />
+              </div>
+            )}
+            <div className="email">
+              <MdAlternateEmail />
+              <input type="email" placeholder="Enter email" />
+            </div>
+            <div className="password">
+              <AiOutlineLock />
+              <input type="password" placeholder="Password" />
+            </div>
+            <button className="signin-btn">
+              {values.isMember ? 'Login' : 'Register'}
+            </button>
+          </div>
+          <p>
+            {values.isMember ? 'Not a member yet?' : 'Alreaddy a member? '}
+            <button type="button" onClick={toggleMember}>
+              {values.isMember ? 'Register' : 'Login'}
+            </button>
+          </p>
+        </form>
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 85vw;
-  height: 700px;
-  padding: 60px 20px 35px 20px;
-  border-radius: 40px;
-  background-color: var(--main-color);
-  box-shadow: 15px 15px 20px #cbced1, -15px -15px 20px #fff;
-
+  .login {
+    width: 85vw;
+    height: 700px;
+    padding: 60px 20px 35px 20px;
+    border-radius: 40px;
+    background-color: var(--main-color);
+    box-shadow: 15px 15px 20px #cbced1, -15px -15px 20px #fff;
+  }
   .logo {
     width: 100px;
     height: 100px;
@@ -87,12 +90,14 @@ const Wrapper = styled.div`
     padding-top: 24px;
     letter-spacing: var(--spacing);
     text-transform: capitalize;
+    font-weight: var(--font-semi-bold);
   }
   .subtitle {
     text-align: center;
     padding-top: 7px;
     letter-spacing: var(--spacing);
     text-transform: capitalize;
+    font-weight: var(--font-semi-bold);
   }
   .fields {
     width: 100%;
@@ -154,6 +159,20 @@ const Wrapper = styled.div`
       font-size: var(--big-font-size);
       margin-left: 0.5rem;
       letter-spacing: var(--spacing);
+    }
+  }
+
+  @media (min-width: 430px) {
+    .login {
+      height: 750px;
+      width: 75vw;
+    }
+
+    p {
+      font-size: var(--big-font-size);
+      button {
+        font-size: var(--bigger-font-size);
+      }
     }
   }
 `;
