@@ -1,16 +1,21 @@
 import React from 'react';
 import { AiOutlineUser, AiOutlineTrophy } from 'react-icons/ai';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
     <Wrapper>
-      <button>
-        <AiOutlineTrophy />
-      </button>
-      <button>
-        <AiOutlineUser />
-      </button>
+      <Link to="/profile">
+        <button>
+          <AiOutlineTrophy />
+        </button>
+      </Link>
+      <Link to="/achievments">
+        <button>
+          <AiOutlineUser />
+        </button>
+      </Link>
     </Wrapper>
   );
 };
@@ -30,6 +35,13 @@ const Wrapper = styled.nav`
     svg {
       font-size: 2.5rem;
       opacity: 0.75;
+    }
+  }
+
+  @media (min-width: 450px) {
+    button {
+      height: 5rem;
+      width: 5rem;
     }
   }
 `;

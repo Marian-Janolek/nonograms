@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { IconType } from 'react-icons/lib';
 
 interface TextI {
   text: string;
   path: string;
+  icon?: any;
 }
 
-const Button: React.FC<TextI> = ({ text, path }) => {
+const Button: React.FC<TextI> = ({ text, path, icon }) => {
   return (
     <Link to={path}>
       <Wrapper>
+        <span className="icon">{icon}</span>
         <span>{text}</span>
       </Wrapper>
     </Link>
@@ -26,12 +29,27 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   span {
     font-size: var(--bigger-font-size);
     letter-spacing: var(--spacing);
     font-weight: var(--font-bold);
     opacity: 0.75;
+  }
+  .icon {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    font-size: 2rem;
+    opacity: 0.7;
+  }
+  @media (min-width: 450px) {
+    width: 20rem;
+    height: 5rem;
+    .icon {
+      font-size: 3rem;
+    }
   }
 `;
 
