@@ -6,6 +6,7 @@ import {
   EasyMenu,
   MediumMenu,
   HardMenu,
+  ProfilePage,
 } from './pages';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/register" element={<Login />} />
         <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/selectGame" element={<SelectGame />} />
         <Route path="/selectGame/easy" element={<EasyMenu />} />
         <Route path="/selectGame/medium" element={<MediumMenu />} />

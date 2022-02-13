@@ -3,6 +3,7 @@ import logo from '../assets/logo.jpg';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import { MdAlternateEmail } from 'react-icons/md';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface InitialStateI {
   name: string;
@@ -49,9 +50,11 @@ const Login: React.FC = () => {
               <AiOutlineLock />
               <input type="password" placeholder="Password" />
             </div>
-            <button className="signin-btn">
-              {values.isMember ? 'Login' : 'Register'}
-            </button>
+            <Link to="/">
+              <button className="signin-btn">
+                {values.isMember ? 'Login' : 'Register'}
+              </button>
+            </Link>
           </div>
           <p>
             {values.isMember ? 'Not a member yet?' : 'Alreaddy a member? '}
@@ -68,7 +71,7 @@ const Login: React.FC = () => {
 const Wrapper = styled.div`
   .login {
     width: 85vw;
-    height: 700px;
+    height: 720px;
     padding: 60px 20px 35px 20px;
     border-radius: 40px;
     background-color: var(--main-color);

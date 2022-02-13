@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 const Navbar: React.FC = () => {
   return (
     <Wrapper>
-      <Link to="/profile">
+      <Link to="/achievements">
         <button>
           <AiOutlineTrophy />
         </button>
       </Link>
-      <Link to="/achievments">
+      <Link to="/profile">
         <button>
           <AiOutlineUser />
         </button>
