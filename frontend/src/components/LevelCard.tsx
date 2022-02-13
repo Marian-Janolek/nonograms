@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 interface LevelCardI {
   level: number;
-  icon: any;
+  icon?: any;
 }
 
 const LevelCard: React.FC<LevelCardI> = ({ level, icon }) => {

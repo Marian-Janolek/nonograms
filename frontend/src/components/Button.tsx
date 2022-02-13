@@ -30,6 +30,10 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  &:active {
+    box-shadow: inset 5px 5px 10px #b1b1b1, inset -5px -5px 10px #fff;
+    transform: scale(0.98);
+  }
 
   span {
     font-size: var(--bigger-font-size);

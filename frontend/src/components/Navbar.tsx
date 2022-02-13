@@ -32,6 +32,10 @@ const Wrapper = styled.nav`
     border-radius: 50%;
     box-shadow: 5px 5px 10px #b1b1b1, -5px -5px 10px #fff;
 
+    &:active {
+      box-shadow: inset 5px 5px 10px #b1b1b1, inset -5px -5px 10px #fff;
+    }
+
     svg {
       font-size: 2.5rem;
       opacity: 0.75;
