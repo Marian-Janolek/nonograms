@@ -157,10 +157,15 @@ const Wrapper = styled.div`
         font-weight: var(--font-bold);
         text-transform: capitalize;
       }
+
       &:active {
         background-color: #000;
         color: #fff;
       }
+    }
+    .submit-btn {
+      background-color: #000;
+      color: #fff;
     }
   }
 `;
