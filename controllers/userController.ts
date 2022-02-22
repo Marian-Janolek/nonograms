@@ -1,8 +1,9 @@
 import User, { UserInput } from '../models/User';
 import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
+import { UserLoginI } from '../models/models';
 
-const register = async (req: Request, res: Response) => {
+const register = async (req: Request<{}, {}, UserInput>, res: Response) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     throw new Error('Please provide all values');
@@ -16,16 +17,18 @@ const register = async (req: Request, res: Response) => {
   }
   const user = await User.create<UserInput>({ name, email, password, isAdmin });
 
+  const token = user.createJWT();
+
+  // @ts-ignore
+  user.password = undefined;
+
   res.status(StatusCodes.CREATED).json({
-    user: {
-      email: user.email,
-      name: user.name,
-      isAdmin: user.isAdmin,
-    },
+    user,
+    token,
   });
 };
 
-const login = async (req: Request, res: Response) => {
+const login = async (req: Request<{}, {}, UserLoginI>, res: Response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -41,9 +44,11 @@ const login = async (req: Request, res: Response) => {
     throw new Error('Invalid credentials!');
   }
 
-  user.password = '';
+  const token = user.createJWT();
+  // @ts-ignore
+  user.password = undefined;
 
-  res.status(StatusCodes.OK).json({ user });
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
 const update = async (req: Request, res: Response) => {

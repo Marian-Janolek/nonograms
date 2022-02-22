@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export interface UserInput {
   name: string;
@@ -12,6 +13,7 @@ export interface UserDocument extends UserInput, mongoose.Document {
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
+  createJWT(): any;
 }
 
 export const UserSchema = new mongoose.Schema(
@@ -44,6 +46,12 @@ UserSchema.pre('save', async function (this: UserDocument) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+UserSchema.methods.createJWT = function () {
+  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET!, {
+    expiresIn: process.env.JWT_LIFETIME,
+  });
+};
 
 UserSchema.methods.comparePassword = async function (
   candidatePassword: string
