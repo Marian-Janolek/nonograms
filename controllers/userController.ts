@@ -51,20 +51,20 @@ const login = async (req: Request<{}, {}, UserLoginI>, res: Response) => {
   res.status(StatusCodes.OK).json({ user, token });
 };
 
-const update = async (req: Request, res: Response) => {
-  const { email, name, password } = req.body;
+const updateUser = async (req: Request<{}, {}, UserInput>, res: Response) => {
+  const { email, name } = req.body;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ _id: req.user.userId });
   if (!user) {
     throw new Error('User does not exists!');
   }
   user.email = email;
   user.name = name;
-  user.password = password;
 
   await user.save();
+  const token = user.createJWT();
 
-  res.status(StatusCodes.OK).json({ user });
+  res.status(StatusCodes.OK).json({ user, token });
 };
 
-export { register, login, update };
+export { register, login, updateUser };

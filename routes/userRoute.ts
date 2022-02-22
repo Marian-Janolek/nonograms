@@ -1,8 +1,10 @@
 import express from 'express';
 const router = express.Router();
-import { login, register } from '../controllers/userController';
+import { login, register, updateUser } from '../controllers/userController';
+import authenticateUser from '../middleware/auth';
 
 router.route('/register').post(register);
 router.route('/login').post(login);
+router.route('/updateUser').patch(authenticateUser, updateUser);
 
 export default router;
