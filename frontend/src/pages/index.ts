@@ -6,6 +6,7 @@ import MediumMenu from './MediumMenu';
 import HardMenu from './HardMenu';
 import DifficultyMenu from './DifficultyMenu';
 import ProfilePage from './ProfilePage';
+import LevelPage from './LevelPage';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   HardMenu,
   DifficultyMenu,
   ProfilePage,
+  LevelPage,
 };

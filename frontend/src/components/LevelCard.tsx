@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiFillLock } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface LevelCardI {
@@ -10,8 +10,10 @@ interface LevelCardI {
 const LevelCard: React.FC<LevelCardI> = ({ level, icon }) => {
   return (
     <Wrapper>
-      <span className="icon">{icon}</span>
-      <span>{level}</span>
+      <Link to={`/selectGame/easy/${level}`}>
+        <span className="icon">{icon}</span>
+        <span>{level}</span>
+      </Link>
     </Wrapper>
   );
 };
@@ -34,6 +36,7 @@ const Wrapper = styled.div`
     font-size: 5rem;
     opacity: 0.25;
     bottom: -40%;
+    left: 0;
   }
 `;
 

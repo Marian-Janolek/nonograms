@@ -6,9 +6,9 @@ import { BsArrowLeft } from 'react-icons/bs';
 const SelectGame: React.FC = () => {
   return (
     <Wrapper>
-      <Button text="5 x 5" path="/selectGame/easy" />
-      <Button text="10 x 10" path="/selectGame/medium" />
-      <Button text="15 x 15" path="/selectGame/hard" />
+      <Button text="10 x 10" path="/selectGame/easy" />
+      <Button text="15 x 15" path="/selectGame/medium" />
+      <Button text="20 x 20" path="/selectGame/hard" />
       <Button text="back" path="/" icon={<BsArrowLeft />} />
     </Wrapper>
   );

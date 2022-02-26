@@ -4,7 +4,7 @@ import { DifficultyMenu } from './';
 const EasyMenu: React.FC = () => {
   return (
     <div>
-      <DifficultyMenu heading="5 x 5" />
+      <DifficultyMenu heading="10 x 10" />
     </div>
   );
 };

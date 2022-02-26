@@ -4,7 +4,7 @@ import { DifficultyMenu } from '.';
 const HardMenu: React.FC = () => {
   return (
     <div>
-      <DifficultyMenu heading="15 x 15" />
+      <DifficultyMenu heading="20 x 20" />
     </div>
   );
 };

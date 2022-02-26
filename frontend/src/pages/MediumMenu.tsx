@@ -4,7 +4,7 @@ import { DifficultyMenu } from '.';
 const MediumMenu: React.FC = () => {
   return (
     <div>
-      <DifficultyMenu heading="10 x 10" />
+      <DifficultyMenu heading="15 x 15" />
     </div>
   );
 };
