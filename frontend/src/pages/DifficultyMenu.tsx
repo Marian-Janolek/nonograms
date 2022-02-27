@@ -42,17 +42,6 @@ const DifficultyMenu: React.FC<DifficultyMenuI> = ({ heading }) => {
 };
 
 const Wrapper = styled.main`
-  .heading {
-    margin-top: 1.5rem;
-    font-size: 5rem;
-    font-weight: var(--font-bold);
-    background: #b1b1b1;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: rgba(255, 255, 255, 0.5) 1px 2px 1px;
-  }
-
   .cards {
     display: flex;
     align-items: center;

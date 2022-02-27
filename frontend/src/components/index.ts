@@ -6,6 +6,11 @@ import LevelCard from './LevelCard';
 import Profile from './Profile';
 import CircleProgress from './CircleProgress';
 import BottonBar from './BottonBar';
+import Cell from './Cell';
+import GridBoard from './GridBoard';
+import VerticalHints from './VerticalHints';
+import HorizontalHints from './HorizontalHints';
+import Preview from './Preview';
 
 export {
   Navbar,
@@ -16,4 +21,9 @@ export {
   Profile,
   CircleProgress,
   BottonBar,
+  Cell,
+  GridBoard,
+  VerticalHints,
+  HorizontalHints,
+  Preview,
 };

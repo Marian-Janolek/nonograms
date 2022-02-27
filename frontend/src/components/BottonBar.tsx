@@ -9,7 +9,7 @@ interface IconI {
 }
 
 const BottonBar: React.FC = () => {
-  const [buttonState, setButtonState] = useState<string>('0');
+  const [buttonState, setButtonState] = useState('0');
 
   const handleClick = (icon: IconI) => {
     if (!icon.state) return;
@@ -38,7 +38,7 @@ const BottonBar: React.FC = () => {
 
 const Wrapper = styled.div`
   position: fixed;
-  bottom: 2%;
+  bottom: 5%;
   left: 0;
   width: 100%;
 

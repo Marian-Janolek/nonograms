@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { IconType } from 'react-icons/lib';
 
 interface TextI {
   text: string;
