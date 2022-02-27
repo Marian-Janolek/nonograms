@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import logo from '../assets/logo.jpg';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import { MdAlternateEmail } from 'react-icons/md';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppContext } from '../context/appContext';
 
 interface InitialStateI {
   name: string;
@@ -21,9 +22,26 @@ const initialState: InitialStateI = {
 
 const Login: React.FC = () => {
   const [values, setValues] = useState<InitialStateI>(initialState);
+  //  @ts-ignore
+  const { user, isLoading, isError, registerUser } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!name && !isMember)) {
+      console.log('error');
+      return;
+    }
+    const currentUser = { name, email, password };
+    registerUser(currentUser);
   };
 
   return (
@@ -34,24 +52,42 @@ const Login: React.FC = () => {
         </div>
         <h1 className="title">nonograms</h1>
         <h2 className="subtitle">{values.isMember ? 'Login' : 'Register'}</h2>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className="fields">
             {!values.isMember && (
               <div className="username">
                 <AiOutlineUser />
-                <input type="text" placeholder="Username" />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="name"
+                  value={values.name}
+                  onChange={handleChange}
+                />
               </div>
             )}
             <div className="email">
               <MdAlternateEmail />
-              <input type="email" placeholder="Enter email" />
+              <input
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
             </div>
             <div className="password">
               <AiOutlineLock />
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+              />
             </div>
             <Link to="/">
-              <button className="signin-btn">
+              <button type="submit" className="signin-btn">
                 {values.isMember ? 'Login' : 'Register'}
               </button>
             </Link>
